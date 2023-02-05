@@ -1,0 +1,37 @@
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.117.0/build/three.js"></script>
+  <style>
+    body {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+    var geometry = new THREE.BoxGeometry(1, 1, 1);
+    var material1 = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+    var material2 = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+    var material3 = new THREE.MeshBasicMaterial({ color: 0x0000ff });
+    var material4 = new THREE.MeshBasicMaterial({ color: 0xffff00 });
+    var material5 = new THREE.MeshBasicMaterial({ color: 0xff00ff });
+    var material6 = new THREE.MeshBasicMaterial({ color: 0x00ffff });
+    var materials = [material1, material2, material3, material4, material5, material6];
+    var cube = new THREE.Mesh(geometry, materials);
+    scene.add(cube);
+    camera.position.z = 5;
+    var animate = function () {
+      requestAnimationFrame(animate);
+      cube.rotation.x += 0.01;
+      cube.rotation.y += 0.01;
+      renderer.render(scene, camera);
+    };
+    animate();
+  </script>
+</body>
+</html>
